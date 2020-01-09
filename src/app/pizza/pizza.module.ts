@@ -9,6 +9,7 @@ import { pizzaReducer } from './store/reducers/pizza.reducer';
     CommonModule,
     StoreModule.forFeature('pizza', pizzaReducer) // name of reducer and reducer itself
   ],
-  declarations: [PizzaOrderComponent]
+  declarations: [PizzaOrderComponent],
+  exports: [PizzaOrderComponent]
 })
 export class PizzaModule { }

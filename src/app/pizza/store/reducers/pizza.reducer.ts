@@ -1,7 +1,5 @@
 import * as pizzaActions from '../actions/pizza.actions';
 import { initialState, pizzaAdapter } from '../pizza.state';
-import { DELETE, deleteAction } from '../actions/pizza.actions';
-import { s } from '@angular/core/src/render3';
 
 export function pizzaReducer(state = initialState, action: pizzaActions.PizzaActions) {
   switch(action.type) {

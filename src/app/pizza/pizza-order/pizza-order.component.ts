@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import * as fromState from '../store/pizza.state';
 import { Store } from '@ngrx/store';
 import * as fromPizzaActions from '../../pizza/store/actions/pizza.actions';
-import * as fromPizzaReducers from '../../pizza/store/reducers/pizza.reducer';
 import * as fromPizzaSelectors from '../../pizza/store/selectors/pizza.selectors';
 
 

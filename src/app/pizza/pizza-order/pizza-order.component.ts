@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import * as fromState from '../store/pizza.state';
 import { Store } from '@ngrx/store';
 import * as fromPizzaActions from '../../pizza/store/actions/pizza.actions';
-import * as fromPizzaSelectors from '../../pizza/store/selectors/pizza.selectors';
+import * as fromPizza from '../../pizza/store/reducers/pizza.reducer';
 
 
 
@@ -15,30 +14,31 @@ import * as fromPizzaSelectors from '../../pizza/store/selectors/pizza.selectors
 export class PizzaOrderComponent implements OnInit {
 
   // Observable that will loop over in the HTML
-  pizzasS: Observable<any>;
+  pizzas$: Observable<any>;
 
-  constructor(private store: Store<fromState.State>) { }
+  constructor(private store: Store<fromPizza.State>) { }
 
   ngOnInit() {
     // Getting the actual pizzas Observable
-    this.pizzasS = this.store.select(fromPizzaSelectors.selectAll);
+    this.pizzas$ = this.store.select(fromPizza .selectAll);
+
   }
 
   createPizza() {
-    const pizza: fromState.Pizza = {
+    const pizza: fromPizza.Pizza = {
       id: new Date().getUTCMilliseconds().toString(),
       size: 'small'
-    }
+    };
 
-    this.store.dispatch(new fromPizzaActions.createAction(pizza));
+    this.store.dispatch(new fromPizzaActions.CreateAction(pizza));
   }
 
   updatePizza(id: string, size: string) {
-    this.store.dispatch(new fromPizzaActions.updateAction(id, {size: size }));
+    this.store.dispatch(new fromPizzaActions.UpdateAction(id, {size: size }));
   }
 
   deletePizza(id) {
-    this.store.dispatch(new fromPizzaActions.deleteAction(id));
+    this.store.dispatch(new fromPizzaActions.DeleteAction(id));
   }
 
 }
